@@ -7,6 +7,8 @@
 //
 
 #import "SceneDelegate.h"
+#import "ViewController.h"
+#import "CollectionViewCell.h"
 
 @interface SceneDelegate ()
 
@@ -15,10 +17,23 @@
 @implementation SceneDelegate
 
 
+/**
+ 
+ */
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+    if (@available(iOS 13.0, *)) {
+        UIWindowScene *windowScene = (UIWindowScene *)scene;
+        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        [self.window setWindowScene:windowScene];
+        
+        ViewController *viewController = [[ViewController alloc] init];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+        [self.window setRootViewController:navigationController];
+        [self.window makeKeyAndVisible];
+    }
 }
 
 

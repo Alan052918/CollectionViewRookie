@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  FacePanel.h
 //  CollectionViewRookie
 //
 //  Created by Alan Ai on 2020/7/22.
@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
-
+@interface FacePanel : UIView <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @end
 
+NS_ASSUME_NONNULL_END
