@@ -8,7 +8,7 @@
 
 #import "SceneDelegate.h"
 #import "ViewController.h"
-#import "CollectionViewCell.h"
+//#import "FaceCell.h"
 
 @interface SceneDelegate ()
 

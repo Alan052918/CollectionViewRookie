@@ -1,8 +1,8 @@
 //
-//  CollectionViewCell.h
+//  BarCell.h
 //  CollectionViewRookie
 //
-//  Created by Alan Ai on 2020/7/22.
+//  Created by Alan Ai on 2020/7/23.
 //  Copyright © 2020 Alan Ai. All rights reserved.
 //
 
@@ -10,9 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CollectionViewCell : UICollectionViewCell
-
-@property (nonatomic, strong) UILabel *textLabel;
+@interface BarCell : UICollectionViewCell
 
 @end
 

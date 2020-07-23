@@ -14,22 +14,37 @@
 @interface FacePanelView () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) UICollectionView *contentCollectionView;
-@property (nonatomic, copy) NSArray<FaceCellViewModel *> *dataSource;
+@property (nonatomic, copy) NSMutableArray<FaceCellViewModel *> *dataSource;
 
 @end
 
 @implementation FacePanelView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        [self setupDataSource];
         [self setupContentView];
         self.selectedFace = nil;
         self.enableLoadMore = YES;
     }
     return self;
 }
+
+- (void)setupDataSource {
+    FaceCellViewModel *FCVM0 = [[FaceCellViewModel alloc] init];
+    FaceCellViewModel *FCVM1 = [[FaceCellViewModel alloc] init];
+    FaceCellViewModel *FCVM2 = [[FaceCellViewModel alloc] init];
+    FaceCellViewModel *FCVM3 = [[FaceCellViewModel alloc] init];
+    FaceCellViewModel *FCVM4 = [[FaceCellViewModel alloc] init];
+    FaceCellViewModel *FCVM5 = [[FaceCellViewModel alloc] init];
+    FaceCellViewModel *FCVM6 = [[FaceCellViewModel alloc] init];
+    FaceCellViewModel *FCVM7 = [[FaceCellViewModel alloc] init];
+    FaceCellViewModel *FCVM8 = [[FaceCellViewModel alloc] init];
+    self.dataSource = [[NSMutableArray alloc] initWithObjects:FCVM0, FCVM1, FCVM2, FCVM3, FCVM4, FCVM5, FCVM6, FCVM7, FCVM8, nil];
+}
+
+#pragma mark - Collection View Setup
 
 - (void)setupContentView {
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
@@ -39,13 +54,15 @@
     flowLayout.minimumLineSpacing = 20.0f;
     flowLayout.sectionInset = UIEdgeInsetsMake(20.0f, 15, 20.0f, 15);
 
-    self.contentCollectionView = [[UICollectionView alloc] initWithFrame:[[UIScreen mainScreen] bounds] collectionViewLayout:flowLayout];
+    self.contentCollectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:flowLayout];
     self.contentCollectionView.delegate = self;
     self.contentCollectionView.dataSource = self;
     self.contentCollectionView.backgroundColor = [UIColor clearColor];
     [self.contentCollectionView registerClass:[FaceCell class] forCellWithReuseIdentifier:NSStringFromClass([FaceCell class])];
     [self addSubview:self.contentCollectionView];
 }
+
+#pragma mark - Collection View Delegate
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     FaceCell *collectionViewCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([FaceCell class]) forIndexPath:indexPath];
@@ -58,7 +75,7 @@
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 42;
+    return self.dataSource.count;
 }
 
 - (CGSize)sizeForChildContentContainer:(nonnull id<UIContentContainer>)container withParentContainerSize:(CGSize)parentSize {
@@ -71,6 +88,10 @@
 
 - (void)updateFocusIfNeeded {
     NSLog(@"Update focus if needed");
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
 
 @end
