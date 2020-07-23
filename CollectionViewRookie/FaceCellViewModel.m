@@ -15,8 +15,8 @@
     if (self) {
         self.faceName = @"Face";
         self.face = nil;
-        self.defaultFace = NO;
-        self.selectedFace = NO;
+        self.isDefaultFace = NO;
+        self.isSelectedFace = NO;
     }
     return self;
 }

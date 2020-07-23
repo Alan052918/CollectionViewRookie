@@ -16,8 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FaceCellViewModel : NSObject
 
 @property (nonatomic, strong) NSString *faceName;
-@property (nonatomic, assign, getter=isDefaultFace) BOOL defaultFace;
-@property (nonatomic, assign, getter=isSelectedFace) BOOL selectedFace;
+@property (nonatomic, assign) BOOL isDefaultFace;
+@property (nonatomic, assign) BOOL isSelectedFace;
 @property (nonatomic, strong, nullable) Face *face;
 
 @end

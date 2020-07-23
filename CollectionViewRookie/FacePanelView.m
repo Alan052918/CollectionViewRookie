@@ -31,6 +31,9 @@
     return self;
 }
 
+#pragma mark - Collection View Setup
+
+// FIXME: data source preparation should not be in view
 - (void)setupDataSource {
     FaceCellViewModel *FCVM0 = [[FaceCellViewModel alloc] init];
     FaceCellViewModel *FCVM1 = [[FaceCellViewModel alloc] init];
@@ -42,9 +45,8 @@
     FaceCellViewModel *FCVM7 = [[FaceCellViewModel alloc] init];
     FaceCellViewModel *FCVM8 = [[FaceCellViewModel alloc] init];
     self.dataSource = [[NSMutableArray alloc] initWithObjects:FCVM0, FCVM1, FCVM2, FCVM3, FCVM4, FCVM5, FCVM6, FCVM7, FCVM8, nil];
+    self.dataSource.firstObject.isSelectedFace = YES;
 }
-
-#pragma mark - Collection View Setup
 
 - (void)setupContentView {
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
@@ -66,7 +68,7 @@
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     FaceCell *collectionViewCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([FaceCell class]) forIndexPath:indexPath];
-    collectionViewCell.backgroundColor = [UIColor greenColor];
+    collectionViewCell.backgroundColor = collectionViewCell.faceCellViewModel.isSelectedFace ? [UIColor orangeColor] : [UIColor greenColor];
     return collectionViewCell;
 }
 
@@ -91,7 +93,13 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [self.dataSource objectAtIndex:indexPath.item].isSelectedFace = YES;
+}
+
+#pragma mark - Modularity
+
+- (void)registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier {
+    [self.contentCollectionView registerClass:cellClass forCellWithReuseIdentifier:identifier];
 }
 
 @end

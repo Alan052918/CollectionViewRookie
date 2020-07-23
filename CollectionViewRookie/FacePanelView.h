@@ -20,7 +20,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) Face *defaultFace;
 @property (nonatomic, strong, nullable) Face *selectedFace;
 
-
+/**
+ * Register custom cell at collection view
+ *
+ * @param cellClass cell class to register
+ * @param identifier reuse identifier
+ */
+- (void)registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier;
 
 @end
 
