@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F71A843624C85380002B705E /* CollectionViewCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F71A843524C85380002B705E /* CollectionViewCellViewModel.m */; };
 		F71A843924C85D5D002B705E /* FacePanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = F71A843824C85D5D002B705E /* FacePanelView.m */; };
 		F736B6AB24C8140500B738FD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F736B6AA24C8140500B738FD /* AppDelegate.m */; };
 		F736B6AE24C8140500B738FD /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F736B6AD24C8140500B738FD /* SceneDelegate.m */; };
@@ -21,11 +20,11 @@
 		F786083B24C956CC0024BD61 /* FacePreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = F786083A24C956CC0024BD61 /* FacePreviewView.m */; };
 		F786083E24C97A870024BD61 /* FooCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F786083D24C97A870024BD61 /* FooCell.m */; };
 		F786084224C97ABD0024BD61 /* BarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F786084124C97ABD0024BD61 /* BarCell.m */; };
+		F7C764F524CA7DDF00A815E8 /* FaceResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C764F424CA7DDF00A815E8 /* FaceResourceManager.m */; };
+		F7C764FC24CAE51000A815E8 /* FaceDownloadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C764FB24CAE51000A815E8 /* FaceDownloadRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F71A843424C85380002B705E /* CollectionViewCellViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewCellViewModel.h; sourceTree = "<group>"; };
-		F71A843524C85380002B705E /* CollectionViewCellViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCellViewModel.m; sourceTree = "<group>"; };
 		F71A843724C85D5D002B705E /* FacePanelView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacePanelView.h; sourceTree = "<group>"; };
 		F71A843824C85D5D002B705E /* FacePanelView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacePanelView.m; sourceTree = "<group>"; };
 		F736B6A624C8140500B738FD /* CollectionViewRookie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewRookie.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +50,10 @@
 		F786083D24C97A870024BD61 /* FooCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FooCell.m; sourceTree = "<group>"; };
 		F786084024C97ABD0024BD61 /* BarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BarCell.h; sourceTree = "<group>"; };
 		F786084124C97ABD0024BD61 /* BarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BarCell.m; sourceTree = "<group>"; };
+		F7C764F324CA7DDF00A815E8 /* FaceResourceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaceResourceManager.h; sourceTree = "<group>"; };
+		F7C764F424CA7DDF00A815E8 /* FaceResourceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceResourceManager.m; sourceTree = "<group>"; };
+		F7C764FA24CAE51000A815E8 /* FaceDownloadRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaceDownloadRequest.h; sourceTree = "<group>"; };
+		F7C764FB24CAE51000A815E8 /* FaceDownloadRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceDownloadRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,15 +96,17 @@
 				F786083A24C956CC0024BD61 /* FacePreviewView.m */,
 				F71A843724C85D5D002B705E /* FacePanelView.h */,
 				F71A843824C85D5D002B705E /* FacePanelView.m */,
-				F786083F24C97AA10024BD61 /* CustomCells */,
 				F76FD46D24C82E53006BF681 /* FaceCell.h */,
 				F76FD46E24C82E53006BF681 /* FaceCell.m */,
 				F786083624C937620024BD61 /* FaceCellViewModel.h */,
 				F786083724C937620024BD61 /* FaceCellViewModel.m */,
 				F784ED2224C863CB00BB9384 /* Face.h */,
 				F784ED2324C863CB00BB9384 /* Face.m */,
-				F71A843424C85380002B705E /* CollectionViewCellViewModel.h */,
-				F71A843524C85380002B705E /* CollectionViewCellViewModel.m */,
+				F7C764F324CA7DDF00A815E8 /* FaceResourceManager.h */,
+				F7C764F424CA7DDF00A815E8 /* FaceResourceManager.m */,
+				F7C764FA24CAE51000A815E8 /* FaceDownloadRequest.h */,
+				F7C764FB24CAE51000A815E8 /* FaceDownloadRequest.m */,
+				F786083F24C97AA10024BD61 /* CustomCells */,
 				F736B6B524C8140700B738FD /* Assets.xcassets */,
 				F736B6B724C8140700B738FD /* LaunchScreen.storyboard */,
 				F736B6BA24C8140700B738FD /* Info.plist */,
@@ -193,15 +198,16 @@
 				F784ED2424C863CB00BB9384 /* Face.m in Sources */,
 				F786084224C97ABD0024BD61 /* BarCell.m in Sources */,
 				F71A843924C85D5D002B705E /* FacePanelView.m in Sources */,
-				F71A843624C85380002B705E /* CollectionViewCellViewModel.m in Sources */,
 				F786083E24C97A870024BD61 /* FooCell.m in Sources */,
 				F736B6B124C8140500B738FD /* ViewController.m in Sources */,
 				F76FD46F24C82E53006BF681 /* FaceCell.m in Sources */,
+				F7C764FC24CAE51000A815E8 /* FaceDownloadRequest.m in Sources */,
 				F736B6AB24C8140500B738FD /* AppDelegate.m in Sources */,
 				F736B6BC24C8140700B738FD /* main.m in Sources */,
 				F736B6AE24C8140500B738FD /* SceneDelegate.m in Sources */,
 				F786083B24C956CC0024BD61 /* FacePreviewView.m in Sources */,
 				F786083824C937620024BD61 /* FaceCellViewModel.m in Sources */,
+				F7C764F524CA7DDF00A815E8 /* FaceResourceManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

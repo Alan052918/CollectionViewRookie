@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UICollectionView *contentCollectionView;
 @property (nonatomic, copy) NSMutableArray<FaceCellViewModel *> *dataSource;
 
+
 @end
 
 @implementation FacePanelView
@@ -31,14 +32,11 @@
     return self;
 }
 
-#pragma mark - Collection View Setup
-
-// FIXME: data source preparation should not be in view
 - (void)setupDataSource {
-    FaceCellViewModel *FCVM0 = [[FaceCellViewModel alloc] init];
-    FaceCellViewModel *FCVM1 = [[FaceCellViewModel alloc] init];
-    FaceCellViewModel *FCVM2 = [[FaceCellViewModel alloc] init];
-    FaceCellViewModel *FCVM3 = [[FaceCellViewModel alloc] init];
+    FaceCellViewModel *FCVM0 = [[FaceCellViewModel alloc] initWithName:@"Alice"];
+    FaceCellViewModel *FCVM1 = [[FaceCellViewModel alloc] initWithName:@"Bob"];
+    FaceCellViewModel *FCVM2 = [[FaceCellViewModel alloc] initWithName:@"John"];
+    FaceCellViewModel *FCVM3 = [[FaceCellViewModel alloc] initWithName:@"Jack"];
     FaceCellViewModel *FCVM4 = [[FaceCellViewModel alloc] init];
     FaceCellViewModel *FCVM5 = [[FaceCellViewModel alloc] init];
     FaceCellViewModel *FCVM6 = [[FaceCellViewModel alloc] init];
@@ -47,6 +45,8 @@
     self.dataSource = [[NSMutableArray alloc] initWithObjects:FCVM0, FCVM1, FCVM2, FCVM3, FCVM4, FCVM5, FCVM6, FCVM7, FCVM8, nil];
     self.dataSource.firstObject.isSelectedFace = YES;
 }
+
+#pragma mark - Collection View Setup
 
 - (void)setupContentView {
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
@@ -69,7 +69,16 @@
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     FaceCell *collectionViewCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([FaceCell class]) forIndexPath:indexPath];
     collectionViewCell.backgroundColor = collectionViewCell.faceCellViewModel.isSelectedFace ? [UIColor orangeColor] : [UIColor greenColor];
+    collectionViewCell.faceCellViewModel = [self.dataSource objectAtIndex:indexPath.item];
     return collectionViewCell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"cell %@ selected!", indexPath);
+    [self.dataSource objectAtIndex:indexPath.item].isSelectedFace = YES;
+    [self.dataSource objectAtIndex:indexPath.item].isDownloading = YES;
+    [collectionView reloadData];
+    [self.delegate facePanelView:self didSelectFace:[self.dataSource objectAtIndex:indexPath.item].face];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -78,22 +87,6 @@
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.dataSource.count;
-}
-
-- (CGSize)sizeForChildContentContainer:(nonnull id<UIContentContainer>)container withParentContainerSize:(CGSize)parentSize {
-    return self.contentCollectionView.frame.size;
-}
-
-- (BOOL)shouldUpdateFocusInContext:(nonnull UIFocusUpdateContext *)context {
-    return YES;
-}
-
-- (void)updateFocusIfNeeded {
-    NSLog(@"Update focus if needed");
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self.dataSource objectAtIndex:indexPath.item].isSelectedFace = YES;
 }
 
 #pragma mark - Modularity

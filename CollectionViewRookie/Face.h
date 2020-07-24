@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Face : NSObject
 
+@property (nonatomic, assign) NSUInteger faceId;
+@property (nonatomic, strong) NSString *faceImageName;
+
 @end
 
 NS_ASSUME_NONNULL_END

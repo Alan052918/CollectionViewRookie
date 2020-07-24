@@ -9,8 +9,12 @@
 #import "ViewController.h"
 #import "FacePanelView.h"
 #import "FacePreviewView.h"
+#import "FaceResourceManager.h"
+#import "FaceDownloadRequest.h"
 
 @interface ViewController ()
+
+@property (nonatomic, strong) NSMutableDictionary<FaceCellViewModel *, FaceDownloadRequest *> *faceDownloadRequestMap;
 
 @end
 
@@ -24,15 +28,25 @@
     [self.view addSubview:facePreviewView];
     
     UILabel *placeholderView = [[UILabel alloc] initWithFrame:CGRectMake(0, 400, self.view.frame.size.width, 40)];
-    placeholderView.text = @"Placeholder View";
+    placeholderView.text = @"Video Playback Segment Control View";
     placeholderView.textAlignment = NSTextAlignmentCenter;
     placeholderView.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:placeholderView];
 
     FacePanelView *facePanelView = [[FacePanelView alloc] initWithFrame:CGRectMake(0, 440, self.view.frame.size.width, 183)];
+    facePanelView.delegate = self;
     [self.view addSubview:facePanelView];
+    
     self.navigationItem.title = @"Navigation Bar";
     self.navigationController.toolbarHidden = NO;
+}
+
+- (void)facePanelView:(UIView *)panelView didSelectFace:(Face *)face {
+    [FaceResourceManager.sharedInstance downloadFace];
+}
+
+- (void)addFaceDownloadObserver:(nonnull NSObject *)observer {
+    <#code#>
 }
 
 @end

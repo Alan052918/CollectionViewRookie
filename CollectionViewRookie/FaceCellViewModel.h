@@ -12,13 +12,23 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol FaceCellViewModelDelegate <NSObject>
+
+- (void)addDownloadProgressObserver:(NSObject *)observer;
+
+@end
+
 @class Face;
 @interface FaceCellViewModel : NSObject
 
 @property (nonatomic, strong) NSString *faceName;
-@property (nonatomic, assign) BOOL isDefaultFace;
-@property (nonatomic, assign) BOOL isSelectedFace;
 @property (nonatomic, strong, nullable) Face *face;
+@property (nonatomic, assign) NSUInteger uid;
+@property (nonatomic, assign) BOOL isSelectedFace;
+@property (nonatomic, assign) BOOL isCelebrityFace;
+@property (nonatomic, assign) BOOL isDownloading;
+
+- (instancetype)initWithName:(NSString *)name;
 
 @end
 

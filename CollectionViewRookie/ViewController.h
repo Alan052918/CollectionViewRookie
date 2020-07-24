@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FacePanelView.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <FacePanelDelegate>
 
 
 

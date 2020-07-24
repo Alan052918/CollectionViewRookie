@@ -26,7 +26,6 @@
 
 - (void)setupContentView {
     self.contentView = [[UIView alloc] initWithFrame:self.bounds];
-    self.contentView.backgroundColor = [UIColor greenColor];
     UIImageView *faceMask = [[UIImageView alloc] initWithFrame:CGRectMake(90.0f, 18.0f, 195.0f, 300.0f)];
     faceMask.layer.masksToBounds = YES;
     faceMask.contentMode = UIViewContentModeScaleAspectFit;
