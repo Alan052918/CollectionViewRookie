@@ -7,7 +7,7 @@
 //
 
 #import "FaceCellViewModel.h"
-#import "FaceResourceManager.h"
+//#import "../FacePanelHelpers/FaceResourceManager.h"
 
 typedef NS_ENUM(NSUInteger, FaceCellViewModelState) {
     FaceCellViewModelStateDefault,

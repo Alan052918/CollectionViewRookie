@@ -8,7 +8,7 @@
 
 #import "FaceCell.h"
 #import "FaceCellViewModel.h"
-#import "FaceResourceManager.h"
+#import "../FacePanelHelpers/FaceResourceManager.h"
 
 @interface FaceCell ()
 
