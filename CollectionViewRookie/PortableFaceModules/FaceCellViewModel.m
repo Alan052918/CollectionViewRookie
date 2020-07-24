@@ -48,7 +48,7 @@ typedef NS_ENUM(NSUInteger, FaceCellViewModelState) {
         case FaceCellViewModelStateDefault:
             break;
         case FaceCellViewModelStateDownloading:
-            [FaceResourceManager.sharedInstance addObserver:self forKeyPath:@"downloadProgressValue" options:NSKeyValueObservingOptionNew context:nil];
+            [self.delegate addDownloadProgressObserver:self];
             break;
         default:
             break;

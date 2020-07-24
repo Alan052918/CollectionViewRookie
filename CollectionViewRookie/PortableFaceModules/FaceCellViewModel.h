@@ -27,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL isSelectedFace;
 @property (nonatomic, assign) BOOL isCelebrityFace;
 @property (nonatomic, assign) BOOL isDownloading;
+@property (nonatomic, strong) id <FaceCellViewModelDelegate> delegate;
 
 - (instancetype)initWithName:(NSString *)name;
 

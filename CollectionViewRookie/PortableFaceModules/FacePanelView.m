@@ -16,7 +16,6 @@
 @property (nonatomic, strong) UICollectionView *contentCollectionView;
 @property (nonatomic, copy) NSMutableArray<FaceCellViewModel *> *dataSource;
 
-
 @end
 
 @implementation FacePanelView

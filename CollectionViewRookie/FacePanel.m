@@ -6,10 +6,10 @@
 //  Copyright © 2020 Alan Ai. All rights reserved.
 //
 
-#import "FacePanelView.h"
+#import "Face/FacePanelView.h"
 #import "FaceCell.h"
-#import "FaceCellViewModel.h"
-#import "Face.h"
+#import "Face/FaceCellViewModel.h"
+#import "Face/Face.h"
 
 @interface FacePanelView () <UICollectionViewDelegate, UICollectionViewDataSource>
 

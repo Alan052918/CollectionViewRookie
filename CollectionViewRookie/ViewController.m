@@ -7,12 +7,12 @@
 //
 
 #import "ViewController.h"
-#import "FacePanelView.h"
+#import "Face/FacePanelView.h"
 #import "FacePreviewView.h"
-#import "FaceResourceManager.h"
-#import "FaceDownloadRequest.h"
+#import "FacePanelHelpers/FaceResourceManager.h"
+#import "FacePanelHelpers/FaceDownloadRequest.h"
 
-@interface ViewController ()
+@interface ViewController () <FacePanelDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary<FaceCellViewModel *, FaceDownloadRequest *> *faceDownloadRequestMap;
 
@@ -46,7 +46,7 @@
 }
 
 - (void)addFaceDownloadObserver:(nonnull NSObject *)observer {
-    <#code#>
+    [FaceResourceManager.sharedInstance addObserver:observer forKeyPath:@"downloadProgressValue" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 @end
