@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "Face/FacePanelView.h"
+#import "FacePanelView.h"
 #import "FacePreviewView.h"
 #import "FacePanelHelpers/FaceResourceManager.h"
 #import "FacePanelHelpers/FaceDownloadRequest.h"
