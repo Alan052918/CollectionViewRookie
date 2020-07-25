@@ -118,13 +118,13 @@
 				F736B6B024C8140500B738FD /* ViewController.m */,
 				F786083924C956CC0024BD61 /* FacePreviewView.h */,
 				F786083A24C956CC0024BD61 /* FacePreviewView.m */,
+				ABA5BF2D90BECCBA9539E47E /* PortableFaceModules */,
 				F786083F24C97AA10024BD61 /* CollectionViewCells */,
+				ABA5B8B98B307B83D69195FD /* FacePanelHelpers */,
 				F736B6B524C8140700B738FD /* Assets.xcassets */,
 				F736B6B724C8140700B738FD /* LaunchScreen.storyboard */,
 				F736B6BA24C8140700B738FD /* Info.plist */,
 				F736B6BB24C8140700B738FD /* main.m */,
-				ABA5BF2D90BECCBA9539E47E /* PortableFaceModules */,
-				ABA5B8B98B307B83D69195FD /* FacePanelHelpers */,
 			);
 			path = CollectionViewRookie;
 			sourceTree = "<group>";
