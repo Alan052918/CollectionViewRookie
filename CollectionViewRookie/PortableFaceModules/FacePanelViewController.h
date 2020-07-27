@@ -1,10 +1,8 @@
 //
-//  FacePanel.h
+//  FacePanelViewController.h
 //  CollectionViewRookie
 //
-//  A subview that displays a face mesh
-//
-//  Created by Alan Ai on 2020/7/22.
+//  Created by Alan Ai on 2020/7/27.
 //  Copyright © 2020 Alan Ai. All rights reserved.
 //
 
@@ -15,12 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 @class Face, FaceCellViewModel;
 @protocol FacePanelDelegate <NSObject>
 
-- (void)facePanelView:(UIView *)panelView didSelectFace:(Face *)face;
-- (void)addFaceDownloadObserver:(NSObject *)observer;
+- (void)facePanel:(UIViewController *)panel didSelectFace:(Face *)face;
+- (void)addFaceDownloadProgressObserver:(NSObject *)observer;
 
 @end
 
-@interface FacePanelView : UIView
+@interface FacePanelViewController : UIViewController
 
 @property (nonatomic, copy) NSArray<Face *> *faceArray;
 @property (nonatomic, assign) BOOL enableLoadMore;
@@ -28,13 +26,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) Face *selectedFace;
 @property (nonatomic, strong) id <FacePanelDelegate> delegate;
 
-/**
- * Register custom cell at collection view
- *
- * @param cellClass cell class to register
- * @param identifier reuse identifier
- */
-- (void)registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier;
+- (void)reloadFacePanel;
+
+- (void)registerCellClass:(Class)cellClass;
+- (void)setCellClass:(Class)cellClass;
 
 @end
 

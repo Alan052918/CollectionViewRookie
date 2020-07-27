@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSUInteger faceId;
 @property (nonatomic, strong) NSString *faceImageName;
 
+@property (nonatomic, copy) NSString *faceCoverUrl;
+@property (nonatomic, assign) unsigned int timestamp;
+
 @end
 
 NS_ASSUME_NONNULL_END

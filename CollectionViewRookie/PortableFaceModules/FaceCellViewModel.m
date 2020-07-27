@@ -9,14 +9,9 @@
 #import "FaceCellViewModel.h"
 //#import "../FacePanelHelpers/FaceResourceManager.h"
 
-typedef NS_ENUM(NSUInteger, FaceCellViewModelState) {
-    FaceCellViewModelStateDefault,
-    FaceCellViewModelStateDownloading,
-};
-
 @interface FaceCellViewModel ()
 
-- (void)updateFaceCellViewModelState:(FaceCellViewModelState)state;
+//- (void)updateFaceState:(FaceState)state;
 
 @end
 
@@ -41,18 +36,6 @@ typedef NS_ENUM(NSUInteger, FaceCellViewModelState) {
     self.isCelebrityFace = NO;
     self.isDownloading = NO;
     return self;
-}
-
-- (void)updateFaceCellViewModelState:(FaceCellViewModelState)state {
-    switch (state) {
-        case FaceCellViewModelStateDefault:
-            break;
-        case FaceCellViewModelStateDownloading:
-            [self.delegate addDownloadProgressObserver:self];
-            break;
-        default:
-            break;
-    }
 }
 
 @end

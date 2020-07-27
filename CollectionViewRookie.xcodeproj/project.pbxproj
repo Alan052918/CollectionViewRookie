@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		ABA5B02D28A3903E9B769976 /* FaceResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA5B9E6EFF77AC1AD7009D9 /* FaceResourceManager.m */; };
-		ABA5B19D132E1468D2E0C2F5 /* FacePanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA5BDB4DFD3CFA49E175143 /* FacePanelView.m */; };
 		ABA5B1EE9369AEDADA611F38 /* Face.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA5B6D7CE2739BD46656BB2 /* Face.m */; };
 		ABA5B40C0672492BCAE6176C /* FaceCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA5B2467F1A829C978DF425 /* FaceCellViewModel.m */; };
 		ABA5BBE246E488B64D168C98 /* FaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA5B6F5D4C98E2432BDA49C /* FaceCell.m */; };
@@ -19,6 +18,7 @@
 		F736B6B624C8140700B738FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F736B6B524C8140700B738FD /* Assets.xcassets */; };
 		F736B6B924C8140700B738FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F736B6B724C8140700B738FD /* LaunchScreen.storyboard */; };
 		F736B6BC24C8140700B738FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F736B6BB24C8140700B738FD /* main.m */; };
+		F742412224CE736A0023B688 /* FacePanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F742412124CE736A0023B688 /* FacePanelViewController.m */; };
 		F786083B24C956CC0024BD61 /* FacePreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = F786083A24C956CC0024BD61 /* FacePreviewView.m */; };
 		F786083E24C97A870024BD61 /* FooCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F786083D24C97A870024BD61 /* FooCell.m */; };
 		F786084224C97ABD0024BD61 /* BarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F786084124C97ABD0024BD61 /* BarCell.m */; };
@@ -34,8 +34,6 @@
 		ABA5B9E6EFF77AC1AD7009D9 /* FaceResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceResourceManager.m; sourceTree = "<group>"; };
 		ABA5BA5D13040060928D9A25 /* FaceResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceResourceManager.h; sourceTree = "<group>"; };
 		ABA5BC6071D74FD5B8B3CE3D /* FaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceCell.h; sourceTree = "<group>"; };
-		ABA5BDB4DFD3CFA49E175143 /* FacePanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacePanelView.m; sourceTree = "<group>"; };
-		ABA5BDC4D9E0D6D5E58D5896 /* FacePanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacePanelView.h; sourceTree = "<group>"; };
 		ABA5BFF6B236CD2542AD9838 /* FaceDownloadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceDownloadRequest.h; sourceTree = "<group>"; };
 		F736B6A624C8140500B738FD /* CollectionViewRookie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewRookie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F736B6A924C8140500B738FD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -48,6 +46,8 @@
 		F736B6B824C8140700B738FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F736B6BA24C8140700B738FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F736B6BB24C8140700B738FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F742412024CE736A0023B688 /* FacePanelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacePanelViewController.h; sourceTree = "<group>"; };
+		F742412124CE736A0023B688 /* FacePanelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacePanelViewController.m; sourceTree = "<group>"; };
 		F786083924C956CC0024BD61 /* FacePreviewView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacePreviewView.h; sourceTree = "<group>"; };
 		F786083A24C956CC0024BD61 /* FacePreviewView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacePreviewView.m; sourceTree = "<group>"; };
 		F786083C24C97A870024BD61 /* FooCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FooCell.h; sourceTree = "<group>"; };
@@ -85,8 +85,8 @@
 				ABA5B6D7CE2739BD46656BB2 /* Face.m */,
 				ABA5B05F6F5872184FAA3946 /* FaceCellViewModel.h */,
 				ABA5B2467F1A829C978DF425 /* FaceCellViewModel.m */,
-				ABA5BDC4D9E0D6D5E58D5896 /* FacePanelView.h */,
-				ABA5BDB4DFD3CFA49E175143 /* FacePanelView.m */,
+				F742412024CE736A0023B688 /* FacePanelViewController.h */,
+				F742412124CE736A0023B688 /* FacePanelViewController.m */,
 			);
 			path = PortableFaceModules;
 			sourceTree = "<group>";
@@ -213,6 +213,7 @@
 			files = (
 				F786084224C97ABD0024BD61 /* BarCell.m in Sources */,
 				F786083E24C97A870024BD61 /* FooCell.m in Sources */,
+				F742412224CE736A0023B688 /* FacePanelViewController.m in Sources */,
 				F736B6B124C8140500B738FD /* ViewController.m in Sources */,
 				F736B6AB24C8140500B738FD /* AppDelegate.m in Sources */,
 				F736B6BC24C8140700B738FD /* main.m in Sources */,
@@ -220,7 +221,6 @@
 				F786083B24C956CC0024BD61 /* FacePreviewView.m in Sources */,
 				ABA5B1EE9369AEDADA611F38 /* Face.m in Sources */,
 				ABA5B40C0672492BCAE6176C /* FaceCellViewModel.m in Sources */,
-				ABA5B19D132E1468D2E0C2F5 /* FacePanelView.m in Sources */,
 				ABA5BBE246E488B64D168C98 /* FaceCell.m in Sources */,
 				ABA5BF3910A6BB495778B5E5 /* FaceDownloadRequest.m in Sources */,
 				ABA5B02D28A3903E9B769976 /* FaceResourceManager.m in Sources */,

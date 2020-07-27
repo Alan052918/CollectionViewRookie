@@ -7,10 +7,11 @@
 //
 
 #import "ViewController.h"
-#import "FacePanelView.h"
+#import "FacePanelViewController.h"
 #import "FacePreviewView.h"
-#import "FacePanelHelpers/FaceResourceManager.h"
-#import "FacePanelHelpers/FaceDownloadRequest.h"
+#import "FaceCell.h"
+#import "FaceResourceManager.h"
+#import "FaceDownloadRequest.h"
 
 @interface ViewController () <FacePanelDelegate>
 
@@ -33,20 +34,21 @@
     placeholderView.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:placeholderView];
 
-    FacePanelView *facePanelView = [[FacePanelView alloc] initWithFrame:CGRectMake(0, 440, self.view.frame.size.width, 183)];
-    facePanelView.delegate = self;
-    [self.view addSubview:facePanelView];
-    
-    self.navigationItem.title = @"Navigation Bar";
-    self.navigationController.toolbarHidden = NO;
+    FacePanelViewController *facePanelViewController = [[FacePanelViewController alloc] init];
+    facePanelViewController.view.frame = CGRectMake(0, 440, self.view.frame.size.width, 183);
+    facePanelViewController.delegate = self;
+    [facePanelViewController registerCellClass:[FaceCell class]];
+    [facePanelViewController setCellClass:[FaceCell class]];
+    [self addChildViewController:facePanelViewController];
+    [self.view addSubview:facePanelViewController.view];
 }
 
-- (void)facePanelView:(UIView *)panelView didSelectFace:(Face *)face {
-    [FaceResourceManager.sharedInstance downloadFace];
-}
-
-- (void)addFaceDownloadObserver:(nonnull NSObject *)observer {
+- (void)addFaceDownloadProgressObserver:(nonnull NSObject *)observer {
     [FaceResourceManager.sharedInstance addObserver:observer forKeyPath:@"downloadProgressValue" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)facePanel:(nonnull UIViewController *)panel didSelectFace:(nonnull Face *)face {
+    [FaceResourceManager.sharedInstance downloadFace];
 }
 
 @end
