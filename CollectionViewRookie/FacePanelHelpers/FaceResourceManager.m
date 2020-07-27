@@ -23,12 +23,13 @@
     return sharedFaceResourceManager;
 }
 
-- (void)downloadFace {
+- (BOOL)downloadFace {
     for (int i = 0; i <= 10; ++i) {
         [self setValue:[NSNumber numberWithInteger:i] forKeyPath:@"downloadProgressValue"];
         [NSThread sleepForTimeInterval:0.1f];
         NSLog(@"manager download progress: %lu", self.downloadProgressValue);
     }
+    return YES;
 }
 
 @end

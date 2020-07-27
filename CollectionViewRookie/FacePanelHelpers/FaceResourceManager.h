@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSUInteger downloadProgressValue;
 
 + (instancetype)sharedInstance;
-- (void)downloadFace;
+- (BOOL)downloadFace;
 
 @end
 

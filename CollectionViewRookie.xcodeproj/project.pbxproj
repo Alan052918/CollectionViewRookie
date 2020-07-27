@@ -18,10 +18,10 @@
 		F736B6B624C8140700B738FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F736B6B524C8140700B738FD /* Assets.xcassets */; };
 		F736B6B924C8140700B738FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F736B6B724C8140700B738FD /* LaunchScreen.storyboard */; };
 		F736B6BC24C8140700B738FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F736B6BB24C8140700B738FD /* main.m */; };
-		F742412224CE736A0023B688 /* FacePanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F742412124CE736A0023B688 /* FacePanelViewController.m */; };
 		F786083B24C956CC0024BD61 /* FacePreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = F786083A24C956CC0024BD61 /* FacePreviewView.m */; };
 		F786083E24C97A870024BD61 /* FooCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F786083D24C97A870024BD61 /* FooCell.m */; };
 		F786084224C97ABD0024BD61 /* BarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F786084124C97ABD0024BD61 /* BarCell.m */; };
+		F93989F024CED1E5004AEFD7 /* FacePanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = F93989EF24CED1E5004AEFD7 /* FacePanelView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,14 +46,14 @@
 		F736B6B824C8140700B738FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F736B6BA24C8140700B738FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F736B6BB24C8140700B738FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F742412024CE736A0023B688 /* FacePanelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacePanelViewController.h; sourceTree = "<group>"; };
-		F742412124CE736A0023B688 /* FacePanelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacePanelViewController.m; sourceTree = "<group>"; };
 		F786083924C956CC0024BD61 /* FacePreviewView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacePreviewView.h; sourceTree = "<group>"; };
 		F786083A24C956CC0024BD61 /* FacePreviewView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacePreviewView.m; sourceTree = "<group>"; };
 		F786083C24C97A870024BD61 /* FooCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FooCell.h; sourceTree = "<group>"; };
 		F786083D24C97A870024BD61 /* FooCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FooCell.m; sourceTree = "<group>"; };
 		F786084024C97ABD0024BD61 /* BarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BarCell.h; sourceTree = "<group>"; };
 		F786084124C97ABD0024BD61 /* BarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BarCell.m; sourceTree = "<group>"; };
+		F93989EE24CED1E5004AEFD7 /* FacePanelView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacePanelView.h; sourceTree = "<group>"; };
+		F93989EF24CED1E5004AEFD7 /* FacePanelView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacePanelView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +85,8 @@
 				ABA5B6D7CE2739BD46656BB2 /* Face.m */,
 				ABA5B05F6F5872184FAA3946 /* FaceCellViewModel.h */,
 				ABA5B2467F1A829C978DF425 /* FaceCellViewModel.m */,
-				F742412024CE736A0023B688 /* FacePanelViewController.h */,
-				F742412124CE736A0023B688 /* FacePanelViewController.m */,
+				F93989EE24CED1E5004AEFD7 /* FacePanelView.h */,
+				F93989EF24CED1E5004AEFD7 /* FacePanelView.m */,
 			);
 			path = PortableFaceModules;
 			sourceTree = "<group>";
@@ -213,7 +213,7 @@
 			files = (
 				F786084224C97ABD0024BD61 /* BarCell.m in Sources */,
 				F786083E24C97A870024BD61 /* FooCell.m in Sources */,
-				F742412224CE736A0023B688 /* FacePanelViewController.m in Sources */,
+				F93989F024CED1E5004AEFD7 /* FacePanelView.m in Sources */,
 				F736B6B124C8140500B738FD /* ViewController.m in Sources */,
 				F736B6AB24C8140500B738FD /* AppDelegate.m in Sources */,
 				F736B6BC24C8140700B738FD /* main.m in Sources */,

@@ -1,8 +1,8 @@
 //
-//  FacePanelViewController.h
+//  FacePanelView.h
 //  CollectionViewRookie
 //
-//  Created by Alan Ai on 2020/7/27.
+//  Created by Alan on 2020/7/27.
 //  Copyright © 2020 Alan Ai. All rights reserved.
 //
 
@@ -13,12 +13,13 @@ NS_ASSUME_NONNULL_BEGIN
 @class Face, FaceCellViewModel;
 @protocol FacePanelDelegate <NSObject>
 
-- (void)facePanel:(UIViewController *)panel didSelectFace:(Face *)face;
-- (void)addFaceDownloadProgressObserver:(NSObject *)observer;
+- (void)facePanelView:(UIView *)facePanelView didSelectFace:(Face *)face;
+- (BOOL)addFaceDownloadProgressObserver:(NSObject *)observer;
+- (BOOL)removeFaceDownloadProgressObserver:(NSObject *)observer;
 
 @end
 
-@interface FacePanelViewController : UIViewController
+@interface FacePanelView : UIView
 
 @property (nonatomic, copy) NSArray<Face *> *faceArray;
 @property (nonatomic, assign) BOOL enableLoadMore;

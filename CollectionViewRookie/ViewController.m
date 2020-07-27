@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "FacePanelViewController.h"
+#import "FacePanelView.h"
 #import "FacePreviewView.h"
 #import "FaceCell.h"
 #import "FaceResourceManager.h"
@@ -16,6 +16,7 @@
 @interface ViewController () <FacePanelDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary<FaceCellViewModel *, FaceDownloadRequest *> *faceDownloadRequestMap;
+@property (nonatomic, strong) FacePanelView *facePanelView;
 
 @end
 
@@ -33,22 +34,31 @@
     placeholderView.textAlignment = NSTextAlignmentCenter;
     placeholderView.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:placeholderView];
-
-    FacePanelViewController *facePanelViewController = [[FacePanelViewController alloc] init];
-    facePanelViewController.view.frame = CGRectMake(0, 440, self.view.frame.size.width, 183);
-    facePanelViewController.delegate = self;
-    [facePanelViewController registerCellClass:[FaceCell class]];
-    [facePanelViewController setCellClass:[FaceCell class]];
-    [self addChildViewController:facePanelViewController];
-    [self.view addSubview:facePanelViewController.view];
+    
+    self.facePanelView = [[FacePanelView alloc] initWithFrame:CGRectMake(0, 440, self.view.frame.size.width, 183)];
+    self.facePanelView.delegate = self;
+    [self.facePanelView registerCellClass:[FaceCell class]];
+    [self.facePanelView setCellClass:[FaceCell class]];
+    [self.view addSubview:self.facePanelView];
+    
+    self.navigationItem.title = @"Navigation Bar";
+    self.navigationController.toolbarHidden = NO;
 }
 
-- (void)addFaceDownloadProgressObserver:(nonnull NSObject *)observer {
+- (BOOL)addFaceDownloadProgressObserver:(nonnull NSObject *)observer {
     [FaceResourceManager.sharedInstance addObserver:observer forKeyPath:@"downloadProgressValue" options:NSKeyValueObservingOptionNew context:nil];
+    return YES;
 }
 
-- (void)facePanel:(nonnull UIViewController *)panel didSelectFace:(nonnull Face *)face {
-    [FaceResourceManager.sharedInstance downloadFace];
+- (BOOL)removeFaceDownloadProgressObserver:(nonnull NSObject *)observer {
+    [FaceResourceManager.sharedInstance removeObserver:observer forKeyPath:@"downloadProgressValue"];
+    return YES;
+}
+
+- (void)facePanelView:(nonnull UIView *)facePanelView didSelectFace:(nonnull Face *)face {
+    if ([FaceResourceManager.sharedInstance downloadFace]) {
+        NSLog(@"Download complete");
+    }
 }
 
 @end

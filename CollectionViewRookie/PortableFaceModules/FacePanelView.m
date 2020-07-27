@@ -1,12 +1,12 @@
 //
-//  FacePanelViewController.m
+//  FacePanelView.m
 //  CollectionViewRookie
 //
-//  Created by Alan Ai on 2020/7/27.
+//  Created by Alan on 2020/7/27.
 //  Copyright © 2020 Alan Ai. All rights reserved.
 //
 
-#import "FacePanelViewController.h"
+#import "FacePanelView.h"
 #import "FaceCell.h"
 #import "FaceCellViewModel.h"
 #import "Face.h"
@@ -16,7 +16,7 @@ typedef NS_ENUM(NSUInteger, FaceState) {
     FaceStateDownloading,
 };
 
-@interface FacePanelViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface FacePanelView () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) UICollectionView *contentCollectionView;
 @property (nonatomic, copy) NSMutableArray<FaceCellViewModel *> *dataSource;
@@ -24,17 +24,17 @@ typedef NS_ENUM(NSUInteger, FaceState) {
 
 @end
 
-@implementation FacePanelViewController
+@implementation FacePanelView
 
-#pragma mark - View Controller Lifecycle
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    [self setupDataSource];
-    [self setupContentView];
-    self.selectedFace = nil;
-    self.enableLoadMore = YES;
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setupDataSource];
+        [self setupContentView];
+        self.selectedFace = nil;
+        self.enableLoadMore = YES;
+    }
+    return self;
 }
 
 #pragma mark - Collection View Setup
@@ -49,7 +49,11 @@ typedef NS_ENUM(NSUInteger, FaceState) {
     FaceCellViewModel *FCVM6 = [[FaceCellViewModel alloc] init];
     FaceCellViewModel *FCVM7 = [[FaceCellViewModel alloc] init];
     FaceCellViewModel *FCVM8 = [[FaceCellViewModel alloc] init];
-    self.dataSource = [[NSMutableArray alloc] initWithObjects:FCVM0, FCVM1, FCVM2, FCVM3, FCVM4, FCVM5, FCVM6, FCVM7, FCVM8, nil];
+    FaceCellViewModel *FCVM9 = [[FaceCellViewModel alloc] init];
+    FaceCellViewModel *FCVM10 = [[FaceCellViewModel alloc] init];
+    FaceCellViewModel *FCVM11 = [[FaceCellViewModel alloc] init];
+    FaceCellViewModel *FCVM12 = [[FaceCellViewModel alloc] init];
+    self.dataSource = [[NSMutableArray alloc] initWithObjects:FCVM0, FCVM1, FCVM2, FCVM3, FCVM4, FCVM5, FCVM6, FCVM7, FCVM8, FCVM9, FCVM10, FCVM11, FCVM12, nil];
     self.dataSource.firstObject.isSelectedFace = YES;
 }
 
@@ -61,7 +65,7 @@ typedef NS_ENUM(NSUInteger, FaceState) {
     flowLayout.minimumLineSpacing = 20.0f;
     flowLayout.sectionInset = UIEdgeInsetsMake(20.0f, 15, 20.0f, 15);
 
-    self.contentCollectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
+    self.contentCollectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:flowLayout];
     self.contentCollectionView.delegate = self;
     self.contentCollectionView.dataSource = self;
     self.contentCollectionView.backgroundColor = [UIColor clearColor];
@@ -69,7 +73,7 @@ typedef NS_ENUM(NSUInteger, FaceState) {
     // default cell class is FaceCell, can be changed with registerClass: and setCellClass:
     [self.contentCollectionView registerClass:[FaceCell class] forCellWithReuseIdentifier:NSStringFromClass([FaceCell class])];
     self.cellClass = [FaceCell class];
-    [self.view addSubview:self.contentCollectionView];
+    [self addSubview:self.contentCollectionView];
 }
 
 #pragma mark - Collection View Delegate
@@ -87,7 +91,9 @@ typedef NS_ENUM(NSUInteger, FaceState) {
     self.selectedFace = [self.dataSource objectAtIndex:indexPath.item].face;
     [self.dataSource objectAtIndex:indexPath.item].isDownloading = YES;
     [collectionView reloadData];
-    [self.delegate facePanel:self didSelectFace:[self.dataSource objectAtIndex:indexPath.item].face];
+    [self.delegate facePanelView:self didSelectFace:[self.dataSource objectAtIndex:indexPath.item].face];
+    [self updateFaceState:FaceStateDownloading];
+//    [self.delegate facePanelView:self didSelectFace:[self.dataSource objectAtIndex:indexPath.item].face];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -117,7 +123,9 @@ typedef NS_ENUM(NSUInteger, FaceState) {
         case FaceStateDefault:
             break;
         case FaceStateDownloading:
-            [self.delegate addFaceDownloadProgressObserver:self];
+            if ([self.delegate addFaceDownloadProgressObserver:self]) {
+                [self.delegate removeFaceDownloadProgressObserver:self];
+            }
             break;
         default:
             break;
