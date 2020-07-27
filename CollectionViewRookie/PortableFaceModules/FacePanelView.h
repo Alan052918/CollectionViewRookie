@@ -10,11 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class FacePanelView, Face, FacePanelViewModel;
+@class FacePanelView, FaceCell, FacePanelViewModel;
 @protocol FacePanelDelegate <NSObject>
 
-- (void)facePanelView:(FacePanelView *)facePanelView didSelectFace:(Face *)face;
-- (void)facePanelView:(FacePanelView *)facePanelView updateWithViewModel:(NSObject *)viewModel;
+- (void)facePanelView:(FacePanelView *)facePanelView didSelectFaceCellAtIndexPath:(nonnull NSIndexPath *)indexPath;
 
 @optional
 - (BOOL)addFaceDownloadProgressObserver:(NSObject *)observer;
@@ -24,7 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol FacePanelDataSource <NSObject>
 
-
+- (NSInteger)countFaces;
+- (void)updateViewModelForCell:(UICollectionViewCell *)cell atIndexPath:(nonnull NSIndexPath *)indexPath;
 
 @end
 
@@ -32,12 +32,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) Class cellClass;
 @property (nonatomic, assign) BOOL enableLoadMore;
-@property (nonatomic, strong) Face *defaultFace;
-@property (nonatomic, strong, nullable) Face *selectedFace;
 @property (nonatomic, strong) id <FacePanelDelegate> delegate;
+@property (nonatomic, strong) id <FacePanelDataSource> dataSource;
 
 - (void)updateFacePanel;
-
 - (void)registerCellClass:(Class)cellClass;
 
 @end

@@ -21,7 +21,7 @@
 		F786084224C97ABD0024BD61 /* BarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F786084124C97ABD0024BD61 /* BarCell.m */; };
 		F93989F024CED1E5004AEFD7 /* FacePanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = F93989EF24CED1E5004AEFD7 /* FacePanelView.m */; };
 		F93989F324CED6AF004AEFD7 /* FacePanelViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F93989F224CED6AF004AEFD7 /* FacePanelViewModel.m */; };
-		F93989F624CEEE09004AEFD7 /* FacePanelCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F93989F524CEEE09004AEFD7 /* FacePanelCellViewModel.m */; };
+		F93989F624CEEE09004AEFD7 /* FaceCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F93989F524CEEE09004AEFD7 /* FaceCellViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,8 +52,8 @@
 		F93989EF24CED1E5004AEFD7 /* FacePanelView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacePanelView.m; sourceTree = "<group>"; };
 		F93989F124CED6AF004AEFD7 /* FacePanelViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacePanelViewModel.h; sourceTree = "<group>"; };
 		F93989F224CED6AF004AEFD7 /* FacePanelViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacePanelViewModel.m; sourceTree = "<group>"; };
-		F93989F424CEEE09004AEFD7 /* FacePanelCellViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacePanelCellViewModel.h; sourceTree = "<group>"; };
-		F93989F524CEEE09004AEFD7 /* FacePanelCellViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacePanelCellViewModel.m; sourceTree = "<group>"; };
+		F93989F424CEEE09004AEFD7 /* FaceCellViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaceCellViewModel.h; sourceTree = "<group>"; };
+		F93989F524CEEE09004AEFD7 /* FaceCellViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceCellViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +85,10 @@
 				F93989EF24CED1E5004AEFD7 /* FacePanelView.m */,
 				F93989F124CED6AF004AEFD7 /* FacePanelViewModel.h */,
 				F93989F224CED6AF004AEFD7 /* FacePanelViewModel.m */,
-				F93989F424CEEE09004AEFD7 /* FacePanelCellViewModel.h */,
-				F93989F524CEEE09004AEFD7 /* FacePanelCellViewModel.m */,
+				ABA5BC6071D74FD5B8B3CE3D /* FaceCell.h */,
+				ABA5B6F5D4C98E2432BDA49C /* FaceCell.m */,
+				F93989F424CEEE09004AEFD7 /* FaceCellViewModel.h */,
+				F93989F524CEEE09004AEFD7 /* FaceCellViewModel.m */,
 			);
 			path = PortableFaceModules;
 			sourceTree = "<group>";
@@ -136,8 +138,6 @@
 				F786083D24C97A870024BD61 /* FooCell.m */,
 				F786084024C97ABD0024BD61 /* BarCell.h */,
 				F786084124C97ABD0024BD61 /* BarCell.m */,
-				ABA5BC6071D74FD5B8B3CE3D /* FaceCell.h */,
-				ABA5B6F5D4C98E2432BDA49C /* FaceCell.m */,
 			);
 			path = FacePanelFeeds;
 			sourceTree = "<group>";
@@ -216,7 +216,7 @@
 				F786083E24C97A870024BD61 /* FooCell.m in Sources */,
 				F93989F024CED1E5004AEFD7 /* FacePanelView.m in Sources */,
 				F736B6B124C8140500B738FD /* ViewController.m in Sources */,
-				F93989F624CEEE09004AEFD7 /* FacePanelCellViewModel.m in Sources */,
+				F93989F624CEEE09004AEFD7 /* FaceCellViewModel.m in Sources */,
 				F736B6AB24C8140500B738FD /* AppDelegate.m in Sources */,
 				F736B6BC24C8140700B738FD /* main.m in Sources */,
 				F736B6AE24C8140500B738FD /* SceneDelegate.m in Sources */,

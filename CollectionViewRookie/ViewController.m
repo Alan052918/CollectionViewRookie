@@ -12,15 +12,15 @@
 // Wire in face panel view
 #import "FacePanelView.h"
 #import "FacePanelViewModel.h"
+#import "FaceCell.h"
+#import "FaceCellViewModel.h"
 
 // Customized face panel helpers
-#import "FaceCell.h"
 #import "FaceResourceManager.h"
 #import "FaceDownloadRequest.h"
 
-@interface ViewController () <FacePanelDelegate>
+@interface ViewController () <FacePanelDelegate, FacePanelDataSource>
 
-//@property (nonatomic, strong) NSMutableDictionary <FaceCellViewModel *, FaceDownloadRequest *> *faceDownloadRequestMap;
 @property (nonatomic, strong) FacePanelView *facePanelView;
 @property (nonatomic, strong) FacePanelViewModel *facePanelViewModel;
 
@@ -34,9 +34,9 @@
     
     self.facePanelViewModel = [[FacePanelViewModel alloc] init];
     
-    
     self.facePanelView = [[FacePanelView alloc] initWithFrame:self.view.bounds];
     self.facePanelView.delegate = self;
+    self.facePanelView.dataSource = self;
     [self.facePanelView registerCellClass:[FaceCell class]];
     [self.facePanelView setCellClass:[FaceCell class]];
     [self.facePanelView updateFacePanel];
@@ -49,15 +49,8 @@
 
 #pragma mark - FacePanelDelegate
 
-- (void)facePanelView:(nonnull UIView *)facePanelView didSelectFace:(nonnull Face *)face {
-    if ([FaceResourceManager.sharedInstance downloadFace]) {
-        NSLog(@"Download complete");
-    }
-}
-
-
-- (void)facePanelView:(nonnull FacePanelView *)facePanelView updateWithViewModel:(nonnull NSObject *)viewModel {
-    <#code#>
+- (void)facePanelView:(nonnull FacePanelView *)facePanelView didSelectFaceCellAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    NSLog(@"[%@].m facePanel didSelectFaceCell", [self class]);
 }
 
 
@@ -72,6 +65,19 @@
 - (BOOL)removeFaceDownloadProgressObserver:(nonnull NSObject *)observer {
     [FaceResourceManager.sharedInstance removeObserver:observer forKeyPath:@"downloadProgressValue"];
     return YES;
+}
+
+
+#pragma mark - FacePanelDataSource
+
+- (NSInteger)countFaces {
+    return [self.facePanelViewModel countViewModels];
+}
+
+
+- (void)updateViewModelForCell:(FaceCell *)cell atIndexPath:(nonnull NSIndexPath *)indexPath {
+    cell.faceNameLabel.text = [self.facePanelViewModel cellViewModelForItemAtIndex:indexPath.item].faceImageName;
+    cell.thumbImageView.image = [UIImage imageNamed:cell.faceNameLabel.text];
 }
 
 

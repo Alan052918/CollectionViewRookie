@@ -17,9 +17,7 @@ typedef NS_ENUM(NSUInteger, FaceState) {
 @interface FacePanelView () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) UICollectionView *contentCollectionView;
-@property (nonatomic, copy) NSMutableArray<FaceCellViewModel *> *dataSource;
 
-- (void)setupContentCollectionView;
 - (void)updateFaceState:(FaceState)state;
 
 @end
@@ -30,41 +28,34 @@ typedef NS_ENUM(NSUInteger, FaceState) {
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setupContentCollectionView];
-        self.selectedFace = nil;
-        self.enableLoadMore = YES;
+        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+        flowLayout.itemSize = CGSizeMake(60.0f, 70.5f);
+        flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        flowLayout.minimumInteritemSpacing = 11.0f;
+        flowLayout.minimumLineSpacing = 20.0f;
+        flowLayout.sectionInset = UIEdgeInsetsMake(20.0f, 15, 20.0f, 15);
+
+        self.contentCollectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:flowLayout];
+        self.contentCollectionView.delegate = self;
+        self.contentCollectionView.dataSource = self;
+        self.contentCollectionView.backgroundColor = [UIColor clearColor];
+        
+        // default cell class is FaceCell, can be changed with registerClass: and setCellClass:
+        self.cellClass = [FaceCell class];
+        [self.contentCollectionView registerClass:self.cellClass forCellWithReuseIdentifier:NSStringFromClass(self.cellClass)];
+        
+        [self addSubview:self.contentCollectionView];
     }
     return self;
-}
-
-
-#pragma mark - Collection View Setup
-
-- (void)setupContentCollectionView {
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    flowLayout.itemSize = CGSizeMake(60.0f, 70.5f);
-    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    flowLayout.minimumInteritemSpacing = 11.0f;
-    flowLayout.minimumLineSpacing = 20.0f;
-    flowLayout.sectionInset = UIEdgeInsetsMake(20.0f, 15, 20.0f, 15);
-
-    self.contentCollectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:flowLayout];
-    self.contentCollectionView.delegate = self;
-    self.contentCollectionView.dataSource = self;
-    self.contentCollectionView.backgroundColor = [UIColor clearColor];
-    
-    // default cell class is FaceCell, can be changed with registerClass: and setCellClass:
-    self.cellClass = [FaceCell class];
-    [self.contentCollectionView registerClass:self.cellClass forCellWithReuseIdentifier:NSStringFromClass(self.cellClass)];
-    
-    [self addSubview:self.contentCollectionView];
 }
 
 
 #pragma mark - Collection View Delegate
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    FaceCell *collectionViewCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(self.cellClass) forIndexPath:indexPath];
+    /// @note Customized cell class for now must inherit from FaceCell class
+    UICollectionViewCell *collectionViewCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(self.cellClass) forIndexPath:indexPath];
+    [self.dataSource updateViewModelForCell:(FaceCell *)collectionViewCell atIndexPath:indexPath];
     return collectionViewCell;
 }
 
@@ -72,6 +63,7 @@ typedef NS_ENUM(NSUInteger, FaceState) {
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"cell %@ selected!", indexPath);
     [self updateFaceState:FaceStateDownloading];
+    [self.delegate facePanelView:self didSelectFaceCellAtIndexPath:indexPath];
 }
 
 
@@ -81,7 +73,7 @@ typedef NS_ENUM(NSUInteger, FaceState) {
 
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.dataSource.count;
+    return [self.dataSource countFaces];
 }
 
 

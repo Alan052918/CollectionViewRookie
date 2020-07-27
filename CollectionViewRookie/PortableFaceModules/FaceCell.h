@@ -13,7 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @class FaceCellViewModel;
 @interface FaceCell : UICollectionViewCell
 
-@property (nonatomic, strong) FaceCellViewModel *faceCellViewModel;
+@property (nonatomic, strong) UILabel *faceNameLabel;
+@property (nonatomic, strong) UILabel *downloadProgressLabel;
+@property (nonatomic, strong) UIView *downloadProgressMask;
+@property (nonatomic, strong) UIImageView *thumbImageView;
 
 @end
 

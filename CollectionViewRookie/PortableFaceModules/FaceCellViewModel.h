@@ -10,7 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FacePanelCellViewModel : NSObject
+@interface FaceCellViewModel : NSObject
+
+@property (nonatomic, strong) NSString *faceImageName;
+
+- (instancetype)initWithName:(NSString *)name;
 
 @end
 

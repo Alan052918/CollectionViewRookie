@@ -7,14 +7,13 @@
 //
 
 #import "FacePanelViewModel.h"
-#import "FacePanelCellViewModel.h"
+#import "FaceCellViewModel.h"
 
 @interface FacePanelViewModel ()
 
-@property (nonatomic, strong) NSMutableArray <FacePanelCellViewModel *> *cellViewModelList;
+@property (nonatomic, strong) NSMutableArray <FaceCellViewModel *> *cellViewModelList;
 
 @property (nonatomic, strong) NSArray <NSString *> *placeholderImageNameList;
-@property (nonatomic, strong) NSArray <NSString *> *placeholderTextList;
 
 @end
 
@@ -26,9 +25,22 @@
     if (self) {
         self.cellViewModelList = [[NSMutableArray alloc] init];
         self.placeholderImageNameList = [[NSArray alloc] initWithObjects:@"Alice", @"Bob", @"Jack", @"John", nil];
-        self.placeholderTextList = [[NSArray alloc] initWithObjects:@"Alice", @"Bob", @"Jack", @"John", nil];
+        for (int i = 0; i < self.placeholderImageNameList.count; ++i) {
+            FaceCellViewModel *faceCellViewModel = [[FaceCellViewModel alloc] initWithName:[self.placeholderImageNameList objectAtIndex:i]];
+            [self.cellViewModelList addObject:faceCellViewModel];
+        }
     }
     return self;
+}
+
+
+- (NSInteger)countViewModels {
+    return self.cellViewModelList.count;
+}
+
+
+- (FaceCellViewModel *)cellViewModelForItemAtIndex:(NSInteger)index {
+    return [self.cellViewModelList objectAtIndex:index];
 }
 
 

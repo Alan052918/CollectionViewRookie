@@ -11,11 +11,6 @@
 
 @interface FaceCell ()
 
-@property (nonatomic, strong) UILabel *faceNameLabel;
-@property (nonatomic, strong) UILabel *downloadProgressLabel;
-@property (nonatomic, strong) UIView *downloadProgressMask;
-@property (nonatomic, strong) UIImageView *thumbImageView;
-
 - (void)setupContentView;
 - (void)updateContentViewWithViewModel:(FaceCellViewModel *)viewModel;
 
