@@ -7,58 +7,72 @@
 //
 
 #import "ViewController.h"
-#import "FacePanelView.h"
 #import "FacePreviewView.h"
+
+// Wire in face panel view
+#import "FacePanelView.h"
+#import "FacePanelViewModel.h"
+
+// Customized face panel helpers
 #import "FaceCell.h"
 #import "FaceResourceManager.h"
 #import "FaceDownloadRequest.h"
 
 @interface ViewController () <FacePanelDelegate>
 
-@property (nonatomic, strong) NSMutableDictionary<FaceCellViewModel *, FaceDownloadRequest *> *faceDownloadRequestMap;
+//@property (nonatomic, strong) NSMutableDictionary <FaceCellViewModel *, FaceDownloadRequest *> *faceDownloadRequestMap;
 @property (nonatomic, strong) FacePanelView *facePanelView;
+@property (nonatomic, strong) FacePanelViewModel *facePanelViewModel;
 
 @end
 
 @implementation ViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    FacePreviewView *facePreviewView = [[FacePreviewView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 336)];
-    [self.view addSubview:facePreviewView];
+    self.facePanelViewModel = [[FacePanelViewModel alloc] init];
     
-    UILabel *placeholderView = [[UILabel alloc] initWithFrame:CGRectMake(0, 400, self.view.frame.size.width, 40)];
-    placeholderView.text = @"Video Playback Segment Control View";
-    placeholderView.textAlignment = NSTextAlignmentCenter;
-    placeholderView.backgroundColor = [UIColor orangeColor];
-    [self.view addSubview:placeholderView];
     
-    self.facePanelView = [[FacePanelView alloc] initWithFrame:CGRectMake(0, 440, self.view.frame.size.width, 183)];
+    self.facePanelView = [[FacePanelView alloc] initWithFrame:self.view.bounds];
     self.facePanelView.delegate = self;
     [self.facePanelView registerCellClass:[FaceCell class]];
     [self.facePanelView setCellClass:[FaceCell class]];
+    [self.facePanelView updateFacePanel];
     [self.view addSubview:self.facePanelView];
     
     self.navigationItem.title = @"Navigation Bar";
     self.navigationController.toolbarHidden = NO;
 }
 
-- (BOOL)addFaceDownloadProgressObserver:(nonnull NSObject *)observer {
-    [FaceResourceManager.sharedInstance addObserver:observer forKeyPath:@"downloadProgressValue" options:NSKeyValueObservingOptionNew context:nil];
-    return YES;
-}
 
-- (BOOL)removeFaceDownloadProgressObserver:(nonnull NSObject *)observer {
-    [FaceResourceManager.sharedInstance removeObserver:observer forKeyPath:@"downloadProgressValue"];
-    return YES;
-}
+#pragma mark - FacePanelDelegate
 
 - (void)facePanelView:(nonnull UIView *)facePanelView didSelectFace:(nonnull Face *)face {
     if ([FaceResourceManager.sharedInstance downloadFace]) {
         NSLog(@"Download complete");
     }
 }
+
+
+- (void)facePanelView:(nonnull FacePanelView *)facePanelView updateWithViewModel:(nonnull NSObject *)viewModel {
+    <#code#>
+}
+
+
+/// optional
+- (BOOL)addFaceDownloadProgressObserver:(nonnull NSObject *)observer {
+    [FaceResourceManager.sharedInstance addObserver:observer forKeyPath:@"downloadProgressValue" options:NSKeyValueObservingOptionNew context:nil];
+    return YES;
+}
+
+
+/// optional
+- (BOOL)removeFaceDownloadProgressObserver:(nonnull NSObject *)observer {
+    [FaceResourceManager.sharedInstance removeObserver:observer forKeyPath:@"downloadProgressValue"];
+    return YES;
+}
+
 
 @end

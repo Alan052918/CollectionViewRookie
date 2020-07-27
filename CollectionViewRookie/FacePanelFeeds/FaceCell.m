@@ -7,8 +7,7 @@
 //
 
 #import "FaceCell.h"
-#import "FaceCellViewModel.h"
-#import "../FacePanelHelpers/FaceResourceManager.h"
+#import "FaceResourceManager.h"
 
 @interface FaceCell ()
 
@@ -24,9 +23,11 @@
 
 @implementation FaceCell
 
+
 - (void)dealloc {
     [FaceResourceManager.sharedInstance removeObserver:self forKeyPath:@"downloadProgressValue"];
 }
+
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -36,9 +37,11 @@
     return self;
 }
 
+
 - (void)setFaceCellViewModel:(FaceCellViewModel *)faceCellViewModel {
     [self updateContentViewWithViewModel:faceCellViewModel];
 }
+
 
 - (void)setupContentView {
     self.downloadProgressLabel = [[UILabel alloc] initWithFrame:self.bounds];
@@ -58,16 +61,19 @@
     [self addSubview:self.faceNameLabel];
 }
 
+
 - (void)updateContentViewWithViewModel:(FaceCellViewModel *)viewModel {
-    self.faceNameLabel.text = viewModel.faceName;
-    self.thumbImageView.image = [UIImage imageNamed:viewModel.faceName];
-    self.backgroundColor = viewModel.isSelectedFace ? [UIColor redColor] : [UIColor greenColor];
+//    self.faceNameLabel.text = viewModel.faceName;
+//    self.thumbImageView.image = [UIImage imageNamed:viewModel.faceName];
+//    self.backgroundColor = viewModel.isSelectedFace ? [UIColor redColor] : [UIColor greenColor];
 //    [self updateFaceCellState:FaceCellStateDownloading];
 }
+
 
 - (void)observeValueForKeyPath:(NSString *)key ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     self.downloadProgressLabel.text = [[object valueForKey:@"downloadProgressValue"] stringValue];
     NSLog(@"observer download progress: %@", self.downloadProgressLabel.text);
 }
+
 
 @end

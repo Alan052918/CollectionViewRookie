@@ -16,6 +16,7 @@
 
 @implementation FacePreviewView
 
+
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -23,6 +24,7 @@
     }
     return self;
 }
+
 
 - (void)setupContentView {
     self.contentView = [[UIView alloc] initWithFrame:self.bounds];
@@ -33,5 +35,6 @@
     [self.contentView addSubview:faceMask];
     [self addSubview:self.contentView];
 }
+
 
 @end

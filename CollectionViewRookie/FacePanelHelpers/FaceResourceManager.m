@@ -14,6 +14,7 @@
 
 @implementation FaceResourceManager
 
+
 + (instancetype)sharedInstance {
     static FaceResourceManager *sharedFaceResourceManager = nil;
     static dispatch_once_t onceToken;
@@ -23,6 +24,7 @@
     return sharedFaceResourceManager;
 }
 
+
 - (BOOL)downloadFace {
     for (int i = 0; i <= 10; ++i) {
         [self setValue:[NSNumber numberWithInteger:i] forKeyPath:@"downloadProgressValue"];
@@ -31,5 +33,6 @@
     }
     return YES;
 }
+
 
 @end
