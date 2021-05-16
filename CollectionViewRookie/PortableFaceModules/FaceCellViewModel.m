@@ -12,6 +12,7 @@
 
 - (instancetype)init {
     self = [super init];
+    self.isSelectedFace = NO;
     return self;
 }
 

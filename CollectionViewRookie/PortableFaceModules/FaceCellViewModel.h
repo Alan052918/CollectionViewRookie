@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FaceCellViewModel : NSObject
 
 @property (nonatomic, strong) NSString *faceImageName;
+@property (nonatomic, assign) BOOL *isSelectedFace;
 
 - (instancetype)initWithName:(NSString *)name;
 

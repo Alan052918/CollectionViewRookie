@@ -7,6 +7,7 @@
 //
 
 #import "FaceCell.h"
+#import "FaceCellViewModel.h"
 #import "FaceResourceManager.h"
 
 @interface FaceCell ()
@@ -58,9 +59,9 @@
 
 
 - (void)updateContentViewWithViewModel:(FaceCellViewModel *)viewModel {
-//    self.faceNameLabel.text = viewModel.faceName;
-//    self.thumbImageView.image = [UIImage imageNamed:viewModel.faceName];
-//    self.backgroundColor = viewModel.isSelectedFace ? [UIColor redColor] : [UIColor greenColor];
+    self.faceNameLabel.text = viewModel.faceImageName;
+    self.thumbImageView.image = [UIImage imageNamed:viewModel.faceImageName];
+    self.backgroundColor = viewModel.isSelectedFace ? [UIColor redColor] : [UIColor greenColor];
 //    [self updateFaceCellState:FaceCellStateDownloading];
 }
 
